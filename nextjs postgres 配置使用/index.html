@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="执念">
+  <meta name="keywords" content="知识栈,前端,技术人">
+  
+    <meta name="description" content="接上篇 nextjs postgres, 这篇文章来讲解怎么在 nextjs 项目中使用 postgres 数据库。我们来到 vercel 官网，登录找到我们创建配置的 progress 项目，我们点击项目-&gt;进入详情，点击 storage 查看我们生成好的配置。  这里我们选择 .env.local 选项，如下图所示：  点击 Show secret 查看生成的配置文件，复制生成好的文件，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nextjs postgres 配置使用">
+<meta property="og:url" content="https://dev.dgdream.online/nextjs%20postgres%20%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="知识栈">
+<meta property="og:description" content="接上篇 nextjs postgres, 这篇文章来讲解怎么在 nextjs 项目中使用 postgres 数据库。我们来到 vercel 官网，登录找到我们创建配置的 progress 项目，我们点击项目-&gt;进入详情，点击 storage 查看我们生成好的配置。  这里我们选择 .env.local 选项，如下图所示：  点击 Show secret 查看生成的配置文件，复制生成好的文件，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/1-rc-upload-1712392283791-29.png">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/2-rc-upload-1712392283791-31.png">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/3-rc-upload-1712392283791-33.png">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/4-rc-upload-1712392283791-35.png">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/6-rc-upload-1712392283791-37.png">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/5-rc-upload-1712392283791-39.png">
+<meta property="og:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/7-rc-upload-1712392283791-41.png">
+<meta property="article:published_time" content="2024-04-07T15:30:00.000Z">
+<meta property="article:modified_time" content="2024-04-11T02:49:33.599Z">
+<meta property="article:author" content="执念">
+<meta property="article:tag" content="nextjs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/1-rc-upload-1712392283791-29.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>nextjs postgres 配置使用 - 知识栈</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dev.dgdream.online","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>知识栈</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="nextjs postgres 配置使用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-07 23:30" pubdate>
+          2024年4月7日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6792417586845054"
+crossorigin="anonymous"></script>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">nextjs postgres 配置使用</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2024年4月11日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>接上篇 <a target="_blank" rel="noopener" href="https://www.yuque.com/zhinian-armcn/frontend/erltq630n4gczldb?singleDoc#">nextjs postgres</a>, 这篇文章来讲解怎么在 <code>nextjs</code> 项目中使用 <code>postgres</code> 数据库。<br>我们来到 <a target="_blank" rel="noopener" href="https://vercel.com/zhinians-projects">vercel</a> 官网，登录找到我们创建配置的 <code>progress</code> 项目，我们点击项目-&gt;进入详情，点击 <code>storage</code> 查看我们生成好的配置。</p>
+<p><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/1-rc-upload-1712392283791-29.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里我们选择 <code>.env.local</code> 选项，如下图所示：</p>
+<p><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/2-rc-upload-1712392283791-31.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击 <code>Show secret</code> 查看生成的配置文件，复制生成好的文件，到我们项目。在项目的根目录新建一个 <code>.env</code> 文件，把我们在 <code>vercel</code> 中复制的文件粘贴在这里即可。</p>
+<p><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/3-rc-upload-1712392283791-33.png" srcset="/img/loading.gif" lazyload></p>
+<p>新建配置脚本，该脚本会读取本地配置 <code>.env</code> 文件，并且会找到我们写好的 <code>seed.js</code> 读取里面的内容，并创建数据库配置，建表。</p>
+<p><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/4-rc-upload-1712392283791-35.png" srcset="/img/loading.gif" lazyload></p>
+<p>在 <code>scprits/seed.js</code> 目录下创建 <code>seed.js</code> 文件，添加如下内容:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// seed.js</span><br><span class="hljs-keyword">const</span> &#123; db &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@vercel/postgres&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123;<br>  invoices,<br>  customers,<br>  revenue,<br>  users,<br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../app/lib/placeholder-data.js&#x27;</span>);<br><span class="hljs-keyword">const</span> bcrypt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;bcrypt&#x27;</span>);<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">seedUsers</span>(<span class="hljs-params">client</span>) &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`CREATE EXTENSION IF NOT EXISTS &quot;uuid-ossp&quot;`</span>;<br>    <span class="hljs-comment">// Create the &quot;users&quot; table if it doesn&#x27;t exist</span><br>    <span class="hljs-keyword">const</span> createTable = <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">      CREATE TABLE IF NOT EXISTS users (</span><br><span class="hljs-string">        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,</span><br><span class="hljs-string">        name VARCHAR(255) NOT NULL,</span><br><span class="hljs-string">        email TEXT NOT NULL UNIQUE,</span><br><span class="hljs-string">        password TEXT NOT NULL</span><br><span class="hljs-string">      );</span><br><span class="hljs-string">    `</span>;<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Created &quot;users&quot; table`</span>);<br><br>    <span class="hljs-comment">// Insert data into the &quot;users&quot; table</span><br>    <span class="hljs-keyword">const</span> insertedUsers = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(<br>      users.<span class="hljs-title function_">map</span>(<span class="hljs-keyword">async</span> (user) =&gt; &#123;<br>        <span class="hljs-keyword">const</span> hashedPassword = <span class="hljs-keyword">await</span> bcrypt.<span class="hljs-title function_">hash</span>(user.<span class="hljs-property">password</span>, <span class="hljs-number">10</span>);<br>        <span class="hljs-keyword">return</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">        INSERT INTO users (id, name, email, password)</span><br><span class="hljs-string">        VALUES (<span class="hljs-subst">$&#123;user.id&#125;</span>, <span class="hljs-subst">$&#123;user.name&#125;</span>, <span class="hljs-subst">$&#123;user.email&#125;</span>, <span class="hljs-subst">$&#123;hashedPassword&#125;</span>)</span><br><span class="hljs-string">        ON CONFLICT (id) DO NOTHING;</span><br><span class="hljs-string">      `</span>;<br>      &#125;),<br>    );<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Seeded <span class="hljs-subst">$&#123;insertedUsers.length&#125;</span> users`</span>);<br><br>    <span class="hljs-keyword">return</span> &#123;<br>      createTable,<br>      <span class="hljs-attr">users</span>: insertedUsers,<br>    &#125;;<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error seeding users:&#x27;</span>, error);<br>    <span class="hljs-keyword">throw</span> error;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">seedInvoices</span>(<span class="hljs-params">client</span>) &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`CREATE EXTENSION IF NOT EXISTS &quot;uuid-ossp&quot;`</span>;<br><br>    <span class="hljs-comment">// Create the &quot;invoices&quot; table if it doesn&#x27;t exist</span><br>    <span class="hljs-keyword">const</span> createTable = <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">    CREATE TABLE IF NOT EXISTS invoices (</span><br><span class="hljs-string">    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,</span><br><span class="hljs-string">    customer_id UUID NOT NULL,</span><br><span class="hljs-string">    amount INT NOT NULL,</span><br><span class="hljs-string">    status VARCHAR(255) NOT NULL,</span><br><span class="hljs-string">    date DATE NOT NULL</span><br><span class="hljs-string">  );</span><br><span class="hljs-string">`</span>;<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Created &quot;invoices&quot; table`</span>);<br><br>    <span class="hljs-comment">// Insert data into the &quot;invoices&quot; table</span><br>    <span class="hljs-keyword">const</span> insertedInvoices = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(<br>      invoices.<span class="hljs-title function_">map</span>(<br>        <span class="hljs-function">(<span class="hljs-params">invoice</span>) =&gt;</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">        INSERT INTO invoices (customer_id, amount, status, date)</span><br><span class="hljs-string">        VALUES (<span class="hljs-subst">$&#123;invoice.customer_id&#125;</span>, <span class="hljs-subst">$&#123;invoice.amount&#125;</span>, <span class="hljs-subst">$&#123;invoice.status&#125;</span>, <span class="hljs-subst">$&#123;invoice.date&#125;</span>)</span><br><span class="hljs-string">        ON CONFLICT (id) DO NOTHING;</span><br><span class="hljs-string">      `</span>,<br>      ),<br>    );<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Seeded <span class="hljs-subst">$&#123;insertedInvoices.length&#125;</span> invoices`</span>);<br><br>    <span class="hljs-keyword">return</span> &#123;<br>      createTable,<br>      <span class="hljs-attr">invoices</span>: insertedInvoices,<br>    &#125;;<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error seeding invoices:&#x27;</span>, error);<br>    <span class="hljs-keyword">throw</span> error;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">seedCustomers</span>(<span class="hljs-params">client</span>) &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`CREATE EXTENSION IF NOT EXISTS &quot;uuid-ossp&quot;`</span>;<br><br>    <span class="hljs-comment">// Create the &quot;customers&quot; table if it doesn&#x27;t exist</span><br>    <span class="hljs-keyword">const</span> createTable = <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">      CREATE TABLE IF NOT EXISTS customers (</span><br><span class="hljs-string">        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,</span><br><span class="hljs-string">        name VARCHAR(255) NOT NULL,</span><br><span class="hljs-string">        email VARCHAR(255) NOT NULL,</span><br><span class="hljs-string">        image_url VARCHAR(255) NOT NULL</span><br><span class="hljs-string">      );</span><br><span class="hljs-string">    `</span>;<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Created &quot;customers&quot; table`</span>);<br><br>    <span class="hljs-comment">// Insert data into the &quot;customers&quot; table</span><br>    <span class="hljs-keyword">const</span> insertedCustomers = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(<br>      customers.<span class="hljs-title function_">map</span>(<br>        <span class="hljs-function">(<span class="hljs-params">customer</span>) =&gt;</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">        INSERT INTO customers (id, name, email, image_url)</span><br><span class="hljs-string">        VALUES (<span class="hljs-subst">$&#123;customer.id&#125;</span>, <span class="hljs-subst">$&#123;customer.name&#125;</span>, <span class="hljs-subst">$&#123;customer.email&#125;</span>, <span class="hljs-subst">$&#123;customer.image_url&#125;</span>)</span><br><span class="hljs-string">        ON CONFLICT (id) DO NOTHING;</span><br><span class="hljs-string">      `</span>,<br>      ),<br>    );<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Seeded <span class="hljs-subst">$&#123;insertedCustomers.length&#125;</span> customers`</span>);<br><br>    <span class="hljs-keyword">return</span> &#123;<br>      createTable,<br>      <span class="hljs-attr">customers</span>: insertedCustomers,<br>    &#125;;<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error seeding customers:&#x27;</span>, error);<br>    <span class="hljs-keyword">throw</span> error;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">seedRevenue</span>(<span class="hljs-params">client</span>) &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// Create the &quot;revenue&quot; table if it doesn&#x27;t exist</span><br>    <span class="hljs-keyword">const</span> createTable = <span class="hljs-keyword">await</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">      CREATE TABLE IF NOT EXISTS revenue (</span><br><span class="hljs-string">        month VARCHAR(4) NOT NULL UNIQUE,</span><br><span class="hljs-string">        revenue INT NOT NULL</span><br><span class="hljs-string">      );</span><br><span class="hljs-string">    `</span>;<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Created &quot;revenue&quot; table`</span>);<br><br>    <span class="hljs-comment">// Insert data into the &quot;revenue&quot; table</span><br>    <span class="hljs-keyword">const</span> insertedRevenue = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(<br>      revenue.<span class="hljs-title function_">map</span>(<br>        <span class="hljs-function">(<span class="hljs-params">rev</span>) =&gt;</span> client.<span class="hljs-property">sql</span><span class="hljs-string">`</span><br><span class="hljs-string">        INSERT INTO revenue (month, revenue)</span><br><span class="hljs-string">        VALUES (<span class="hljs-subst">$&#123;rev.month&#125;</span>, <span class="hljs-subst">$&#123;rev.revenue&#125;</span>)</span><br><span class="hljs-string">        ON CONFLICT (month) DO NOTHING;</span><br><span class="hljs-string">      `</span>,<br>      ),<br>    );<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Seeded <span class="hljs-subst">$&#123;insertedRevenue.length&#125;</span> revenue`</span>);<br><br>    <span class="hljs-keyword">return</span> &#123;<br>      createTable,<br>      <span class="hljs-attr">revenue</span>: insertedRevenue,<br>    &#125;;<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error seeding revenue:&#x27;</span>, error);<br>    <span class="hljs-keyword">throw</span> error;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">await</span> db.<span class="hljs-title function_">connect</span>();<br><br>  <span class="hljs-keyword">await</span> <span class="hljs-title function_">seedUsers</span>(client);<br>  <span class="hljs-keyword">await</span> <span class="hljs-title function_">seedCustomers</span>(client);<br>  <span class="hljs-keyword">await</span> <span class="hljs-title function_">seedInvoices</span>(client);<br>  <span class="hljs-keyword">await</span> <span class="hljs-title function_">seedRevenue</span>(client);<br><br>  <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">end</span>();<br>&#125;<br><br><span class="hljs-title function_">main</span>().<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<br>    <span class="hljs-string">&#x27;An error occurred while attempting to seed the database:&#x27;</span>,<br>    err,<br>  );<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>在项目中 <code>src/ui/lib/placeholder-data.js</code> 创建 <code>placeholder-data.js</code> 文件，复制如下内容到你的项目。下面这些内容会对应插在相应的表里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// placeholder-data.js</span><br><span class="hljs-comment">// This file contains placeholder data that you&#x27;ll be replacing with real data in the Data Fetching chapter:</span><br><span class="hljs-comment">// https://nextjs.org/learn/dashboard-app/fetching-data</span><br><span class="hljs-keyword">const</span> users = [<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;410544b2-4001-4271-9855-fec4b6a6442a&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;User&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;user@nextmail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;123456&#x27;</span>,<br>  &#125;,<br>];<br><br><span class="hljs-keyword">const</span> customers = [<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3958dc9e-712f-4377-85e9-fec4b6a6442a&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Delba de Oliveira&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;delba@oliveira.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/delba-de-oliveira.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3958dc9e-742f-4377-85e9-fec4b6a6442a&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Lee Robinson&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;lee@robinson.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/lee-robinson.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3958dc9e-737f-4377-85e9-fec4b6a6442a&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Hector Simpson&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;hector@simpson.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/hector-simpson.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;50ca3e18-62cd-11ee-8c99-0242ac120002&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Steven Tey&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;steven@tey.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/steven-tey.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3958dc9e-787f-4377-85e9-fec4b6a6442a&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Steph Dietz&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;steph@dietz.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/steph-dietz.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;76d65c26-f784-44a2-ac19-586678f7c2f2&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Michael Novotny&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;michael@novotny.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/michael-novotny.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;d6e15727-9fe1-4961-8c5b-ea44a9bd81aa&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Evil Rabbit&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;evil@rabbit.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/evil-rabbit.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;126eed9c-c90c-4ef6-a4a8-fcf7408d3c66&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Emil Kowalski&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;emil@kowalski.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/emil-kowalski.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;CC27C14A-0ACF-4F4A-A6C9-D45682C144B9&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Amy Burns&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;amy@burns.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/amy-burns.png&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;13D07535-C59E-4157-A011-F8D2EF4E0CBB&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Balazs Orban&#x27;</span>,<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;balazs@orban.com&#x27;</span>,<br>    <span class="hljs-attr">image_url</span>: <span class="hljs-string">&#x27;/customers/balazs-orban.png&#x27;</span>,<br>  &#125;,<br>];<br><br><span class="hljs-keyword">const</span> invoices = [<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">0</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">15795</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2022-12-06&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">1</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">20348</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2022-11-14&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">4</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">3040</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2022-10-29&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">3</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">44800</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-09-10&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">5</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">34577</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-08-05&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">7</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">54246</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-07-16&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">6</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">666</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-06-27&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">3</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">32545</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-06-09&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">4</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">1250</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-06-17&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">5</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">8546</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-06-07&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">1</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">500</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-08-19&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">5</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">8945</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-06-03&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">2</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">8945</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-06-18&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">0</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">8945</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2023-10-04&#x27;</span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">customer_id</span>: customers[<span class="hljs-number">2</span>].<span class="hljs-property">id</span>,<br>    <span class="hljs-attr">amount</span>: <span class="hljs-number">1000</span>,<br>    <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;paid&#x27;</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-string">&#x27;2022-06-05&#x27;</span>,<br>  &#125;,<br>];<br><br><span class="hljs-keyword">const</span> revenue = [<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Jan&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">2000</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Feb&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">1800</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Mar&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">2200</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Apr&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">2500</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;May&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">2300</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Jun&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">3200</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Jul&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">3500</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Aug&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">3700</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Sep&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">2500</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Oct&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">2800</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Nov&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">3000</span> &#125;,<br>  &#123; <span class="hljs-attr">month</span>: <span class="hljs-string">&#x27;Dec&#x27;</span>, <span class="hljs-attr">revenue</span>: <span class="hljs-number">4800</span> &#125;,<br>];<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  users,<br>  customers,<br>  invoices,<br>  revenue,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>我们现在执行 <code>npm run seed</code> 等待链接数据库，并创建表、并奖对应的数据添加进表里去。</p>
+<p><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/6-rc-upload-1712392283791-37.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来我们登录 <code>vercel</code> 找到 <code>Storage</code> 就可以看到刚刚插入的表以及数据。</p>
+<p><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/5-rc-upload-1712392283791-39.png" srcset="/img/loading.gif" lazyload></p>
+<p>查询表中的数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span> invoices.amount, customers.name<br><span class="hljs-keyword">FROM</span> invoices<br><span class="hljs-keyword">JOIN</span> customers <span class="hljs-keyword">ON</span> invoices.customer_id <span class="hljs-operator">=</span> customers.id<br><span class="hljs-keyword">WHERE</span> invoices.amount <span class="hljs-operator">=</span> <span class="hljs-number">666</span>;<br></code></pre></td></tr></table></figure>
+
+<p>选择 <code>Data -&gt; Query</code> 输入上面的查询条件。<br><img src="https://gmw-blogs.oss-cn-hangzhou.aliyuncs.com/assets/7-rc-upload-1712392283791-41.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/nextjs/" class="category-chain-item">nextjs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/nextjs/" class="print-no-link">#nextjs</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>nextjs postgres 配置使用</div>
+      <div>https://dev.dgdream.online/nextjs postgres 配置使用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>执念</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年4月11日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/js%20%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BD%AC%E5%AF%B9%E5%BA%94%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" title="JS 一维数组，转对应二维数组">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JS 一维数组，转对应二维数组</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/nextjs%20postgres%20%E8%BF%9E%E6%8E%A5/" title="nextjs postgres 连接">
+                        <span class="hidden-mobile">nextjs postgres 连接</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/gaowei1012" target="_blank" rel="nofollow noopener"><span>GitHub</span></a> <i class="iconfont icon-love"></i> <a href="https://www.yuque.com/dashboard" target="_blank" rel="nofollow noopener"><span>语雀</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

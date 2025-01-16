@@ -1,0 +1,928 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="执念">
+  <meta name="keywords" content="知识栈,前端,技术人">
+  
+    <meta name="description" content="flutter 开发中常用的 Widget 组件Container width 宽度 height 高度 margin 设置外间距 padding 设置内间距 alignment 对其方式 decoration Decoration 对 Container 进行修饰 gradient 渐变 boxShadow 阴影   transform 设置形变 constraints 设置 Contianer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter常用widget">
+<meta property="og:url" content="https://dev.dgdream.online/flutter%E5%B8%B8%E7%94%A8widget/index.html">
+<meta property="og:site_name" content="知识栈">
+<meta property="og:description" content="flutter 开发中常用的 Widget 组件Container width 宽度 height 高度 margin 设置外间距 padding 设置内间距 alignment 对其方式 decoration Decoration 对 Container 进行修饰 gradient 渐变 boxShadow 阴影   transform 设置形变 constraints 设置 Contianer">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-24T07:20:00.000Z">
+<meta property="article:modified_time" content="2025-01-07T03:47:06.181Z">
+<meta property="article:author" content="执念">
+<meta property="article:tag" content="flutter">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>flutter常用widget - 知识栈</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dev.dgdream.online","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>知识栈</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="flutter常用widget"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-24 15:20" pubdate>
+          2024年7月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6792417586845054"
+crossorigin="anonymous"></script>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">flutter常用widget</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年1月7日 中午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="flutter-开发中常用的-Widget-组件"><a href="#flutter-开发中常用的-Widget-组件" class="headerlink" title="flutter 开发中常用的 Widget 组件"></a>flutter 开发中常用的 Widget 组件</h3><h4 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h4><ul>
+<li>width 宽度</li>
+<li>height 高度</li>
+<li>margin 设置外间距</li>
+<li>padding 设置内间距</li>
+<li>alignment 对其方式</li>
+<li>decoration Decoration 对 Container 进行修饰<ul>
+<li>gradient 渐变</li>
+<li>boxShadow 阴影</li>
+</ul>
+</li>
+<li>transform 设置形变</li>
+<li>constraints 设置 Contianer 最大、最小宽高</li>
+<li>color 背景颜色</li>
+<li>child 子组件</li>
+</ul>
+<blockquote>
+<p>注意，这里不能同时设置 <code>Color</code> 和 <code>decoration</code> 中的渐变，否则会报错</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs dart">Container(<br>    <span class="hljs-comment">// 设置宽</span><br>    width: <span class="hljs-number">100</span>,<br>    <span class="hljs-comment">// 设置 外间距</span><br>    margin: <span class="hljs-keyword">const</span> EdgeInsets.all(<span class="hljs-number">9</span>),<br>    <span class="hljs-comment">// 设置 内间距</span><br>    padding: <span class="hljs-keyword">const</span> EdgeInsets.all(<span class="hljs-number">8</span>),<br>    <span class="hljs-comment">// 设置高</span><br>    height: <span class="hljs-number">100</span>,<br>    <span class="hljs-comment">// 设置对其方式</span><br>    alignment: Alignment.topLeft,<br>    <span class="hljs-comment">// 使用 Decoration 对 Container 进行修饰</span><br>    decoration: <span class="hljs-keyword">const</span> BoxDecoration(<br>        <span class="hljs-comment">// 渐变</span><br>        gradient: RadialGradient(<br>            <span class="hljs-comment">//背景径向渐变</span><br>            colors: [Colors.red, Colors.green],<br>            center: Alignment.topLeft,<br>            radius: <span class="hljs-number">.98</span>,<br>        ),<br>        <span class="hljs-comment">// 阴影</span><br>        boxShadow: [<br>            <span class="hljs-comment">//卡片阴影</span><br>            BoxShadow(<br>                color: Colors.black54,<br>                offset: Offset(<span class="hljs-number">2.0</span>, <span class="hljs-number">2.0</span>),<br>                blurRadius: <span class="hljs-number">4.0</span>,<br>            )<br>        ],<br>    ),<br>    <span class="hljs-comment">//卡片倾斜变换</span><br>    transform: Matrix4.rotationZ(<span class="hljs-number">.2</span>),<br>    <span class="hljs-comment">// 设置 Contianer 最大、最小宽高</span><br>    <span class="hljs-comment">// constraints: const BoxConstraints(maxWidth: 200, maxHeight: 200),</span><br>    <span class="hljs-comment">// Container 背景颜色</span><br>    <span class="hljs-comment">// color: Colors.green,</span><br>    child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;card&quot;</span>),<br>),<br></code></pre></td></tr></table></figure>
+
+<h4 id="Row"><a href="#Row" class="headerlink" title="Row"></a>Row</h4><ul>
+<li>textDirection 表示水平方向子组件的布局顺序(是从左往右还是从右往左)，默认为系统当前Locale环境的文本方向(如中文、英语都是从左往右，而阿拉伯语是从右往左)</li>
+<li>mainAxisSize 表示Row在主轴(水平)方向占用的空间，默认是MainAxisSize.max</li>
+<li>mainAxisAlignment 表示Row在主轴元素的对其方式</li>
+<li>verticalDirection  表示Row纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</li>
+<li>crossAxisAlignment 表示子组件在纵轴方向的对齐方式，Row的高度等于子组件中最高的子元素高度，它的取值和MainAxisAlignment一样(包含start、end、 center三个值)，不同的是crossAxisAlignment的参考系是verticalDirection，即verticalDirection值为VerticalDirection.down时crossAxisAlignment.start指顶部对齐，verticalDirection值为VerticalDirection.up时，crossAxisAlignment.start指底部对齐；而crossAxisAlignment.end和crossAxisAlignment.start正好相反；</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs dart"> Row(<br>    <span class="hljs-comment">// 表示水平方向子组件的布局顺序(是从左往右还是从右往左)，默认为系统当前Locale环境的文本方向(如中文、英语都是从左往右，而阿拉伯语是从右往左)</span><br>    textDirection: TextDirection.ltr,<br>    <span class="hljs-comment">// 表示Row在主轴(水平)方向占用的空间，默认是MainAxisSize.max</span><br>    mainAxisSize: MainAxisSize.min,<br>    <span class="hljs-comment">// 表示Row在主轴元素的对其方式</span><br>    mainAxisAlignment: MainAxisAlignment.start,<br>    <span class="hljs-comment">// 表示Row纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</span><br>    verticalDirection: VerticalDirection.up,<br>    <span class="hljs-comment">// 表示子组件在纵轴方向的对齐方式，Row的高度等于子组件中最高的子元素高度，它的取值和MainAxisAlignment一样(包含start、end、 center三个值)，不同的是crossAxisAlignment的参考系是verticalDirection，即verticalDirection值为VerticalDirection.down时crossAxisAlignment.start指顶部对齐，verticalDirection值为VerticalDirection.up时，crossAxisAlignment.start指底部对齐；而crossAxisAlignment.end和crossAxisAlignment.start正好相反；</span><br>    crossAxisAlignment: CrossAxisAlignment.start,<br>    children: [<br>        Padding(<br>            padding: EdgeInsets.all(<span class="hljs-number">10</span>),<br>            child: Text(<span class="hljs-string">&quot;你好&quot;</span>),<br>        ),<br>        Padding(<br>            padding: EdgeInsets.all(<span class="hljs-number">5</span>),<br>            child: Text(<span class="hljs-string">&quot;HELLO&quot;</span>),<br>        )<br>    ],<br>),<br></code></pre></td></tr></table></figure>
+
+<h4 id="Column"><a href="#Column" class="headerlink" title="Column"></a>Column</h4><ul>
+<li>mainAxisAlignment Column对其方式</li>
+<li>mainAxisSize Column元素占据空间 max, min</li>
+<li>crossAxisAlignment 表示Column子组件在纵轴方向的对齐方式</li>
+<li>verticalDirection 表示Column纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart">Column(<br>    <span class="hljs-comment">// Column对其方式</span><br>    mainAxisAlignment: MainAxisAlignment.start,<br>    <span class="hljs-comment">// Column元素占据空间 max, min</span><br>    mainAxisSize: MainAxisSize.max,<br>    <span class="hljs-comment">// 表示Column子组件在纵轴方向的对齐方式</span><br>    crossAxisAlignment: CrossAxisAlignment.start,<br>    <span class="hljs-comment">// 表示Column纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</span><br>    verticalDirection: VerticalDirection.up,<br>    children: [Text(<span class="hljs-string">&#x27;你好&#x27;</span>), Text(<span class="hljs-string">&quot;世界&quot;</span>)],<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="SafeArea"><a href="#SafeArea" class="headerlink" title="SafeArea"></a>SafeArea</h4><blockquote>
+<p>安全距，适配与齐刘海设备，防止顶部、底部内容区被遮盖</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dart">SafeArea(<br>    child: Column(<br>    <span class="hljs-comment">// Column对其方式</span><br>    mainAxisAlignment: MainAxisAlignment.start,<br>    <span class="hljs-comment">// Column元素占据空间 max, min</span><br>    mainAxisSize: MainAxisSize.max,<br>    <span class="hljs-comment">// 表示Column子组件在纵轴方向的对齐方式</span><br>    crossAxisAlignment: CrossAxisAlignment.start,<br>    <span class="hljs-comment">// 表示Column纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</span><br>    verticalDirection: VerticalDirection.up,<br>    children: [Text(<span class="hljs-string">&#x27;你好&#x27;</span>), Text(<span class="hljs-string">&quot;世界&quot;</span>)],<br>));<br></code></pre></td></tr></table></figure>
+
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><blockquote>
+<p><code>Flex</code> 布局，根据使用场景的不同，可以结合 <code>Row</code> 或者 <code>Column</code> 使用；<code>Expanded</code> 只能作为 Flex 的孩子（否则会报错）。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs dart">Column(<br>    children: [<br>    <span class="hljs-keyword">const</span> Padding(padding: EdgeInsets.fromLTRB(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)),<br>    Flex(<br>        direction: Axis.horizontal,<br>        children: [<br>        Expanded(<br>            flex: <span class="hljs-number">1</span>,<br>            child: Container(<br>                decoration: <span class="hljs-keyword">const</span> BoxDecoration(color: Colors.red),<br>                alignment: Alignment.topLeft,<br>                child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data1&quot;</span>),<br>            )),<br>        Expanded(<br>            flex: <span class="hljs-number">2</span>,<br>            child: Container(<br>            decoration: <span class="hljs-keyword">const</span> BoxDecoration(color: Colors.blue),<br>            child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data2&quot;</span>),<br>            ),<br>        ),<br>        Expanded(<br>            flex: <span class="hljs-number">1</span>,<br>            child: Container(<br>            alignment: Alignment.topLeft,<br>            decoration: <span class="hljs-keyword">const</span> BoxDecoration(color: Colors.amberAccent),<br>            child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data3&quot;</span>),<br>            ),<br>        )<br>        ],<br>    ),<br>    <span class="hljs-keyword">const</span> Padding(padding: EdgeInsets.fromLTRB(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)),<br>    Flex(<br>        direction: Axis.horizontal,<br>        children: [<br>        Expanded(<br>            flex: <span class="hljs-number">1</span>,<br>            child: Container(<br>            decoration: <span class="hljs-keyword">const</span> BoxDecoration(color: Colors.green),<br>            child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;flex 1&quot;</span>),<br>            ),<br>        )<br>        ],<br>    )<br>    ],<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Wrap"><a href="#Wrap" class="headerlink" title="Wrap"></a>Wrap</h4><blockquote>
+<p><code>Wrap</code>的作用在于，当子使用<code>Row</code>在进行横向或者使用<code>Column</code>进行纵向排列时，子节点过宽。会导致长度溢出，这时候使用<code>Wrap</code>很好的解决了此问题。  </p>
+</blockquote>
+<ul>
+<li>spacing 主轴方向子widget的间距</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs dart">Wrap(<br>    direction: Axis.horizontal,<br>    alignment: WrapAlignment.center,<br>    <span class="hljs-comment">// 主轴方向子widget的间距</span><br>    spacing: <span class="hljs-number">20</span>,<br>    children: [<br>    Container(<br>        alignment: Alignment.topLeft,<br>        color: Colors.red,<br>        width: <span class="hljs-number">80</span>,<br>        height: <span class="hljs-number">80</span>,<br>        child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data1&quot;</span>),<br>    ),<br>    Container(<br>        alignment: Alignment.topLeft,<br>        width: <span class="hljs-number">80</span>,<br>        height: <span class="hljs-number">80</span>,<br>        color: Colors.amberAccent,<br>        child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data2&quot;</span>),<br>    ),<br>    Container(<br>        alignment: Alignment.topLeft,<br>        width: <span class="hljs-number">80</span>,<br>        height: <span class="hljs-number">80</span>,<br>        color: Colors.black38,<br>        child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data3&quot;</span>),<br>    ),<br>    Container(<br>        alignment: Alignment.topLeft,<br>        width: <span class="hljs-number">80</span>,<br>        height: <span class="hljs-number">80</span>,<br>        color: Colors.blueGrey,<br>        child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data4&quot;</span>),<br>    )<br>    ],<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><ul>
+<li><p>ConstrainedBox</p>
+<ul>
+<li>constraints 铺满整个屏幕</li>
+</ul>
+</li>
+<li><p>Stack</p>
+<ul>
+<li>alignment 此参数决定如何去对齐没有定位（没有使用Positioned）或部分定位的子组件。所谓部分定位，在这里特指没有在某一个轴上定位：left、right为横轴，top、bottom为纵轴，只要包含某个轴上的一个定位属性就算在该轴上有定位。</li>
+<li>fit 此参数用于确定没有定位的子组件如何去适应Stack的大小。StackFit.loose表示使用子组件的大小，StackFit.expand表示扩伸到Stack的大小。</li>
+<li>textDirection 和Row、Wrap的textDirection功能一样，都用于确定alignment对齐的参考系，即：textDirection的值为TextDirection.ltr，则alignment的start代表左，end代表右，即从左往右的顺序；textDirection的值为TextDirection.rtl，则alignment的start代表右，end代表左，即从右往左的顺序。</li>
+</ul>
+</li>
+<li><p>Positioned</p>
+<ul>
+<li>left、top 、right、 bottom分别代表离Stack左、上、右、底四边的距离。width和height用于指定需要定位元素的宽度和高度。注意，Positioned的width、height 和其他地方的意义稍微有点区别，此处用于配合left、top 、right、 bottom来定位组件，举个例子，在水平方向时，你只能指定left、right、width三个属性中的两个，如指定left和width后，right会自动算出(left+width)，如果同时指定三个属性则会报错，垂直方向同理。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs dart">ConstrainedBox(<br>    <span class="hljs-comment">// 铺满整个屏幕</span><br>    constraints: <span class="hljs-keyword">const</span> BoxConstraints.expand(),<br>    <span class="hljs-comment">// 使用层级布局，实现元素叠放效果</span><br>    child: Stack(<br>        alignment: Alignment.center,<br>    children: [<br>        Container(<br>            alignment: Alignment.topLeft,<br>                child: Text(<span class="hljs-string">&quot;Hello world&quot;</span>, style: TextStyle(color: Colors.white)),<br>                color: Colors.red,<br>            ),<br>            <span class="hljs-comment">// 左定位</span><br>            <span class="hljs-keyword">const</span> Positioned(<br>                left: <span class="hljs-number">18.0</span>,<br>                child: Text(<span class="hljs-string">&quot;I am Jack&quot;</span>),<br>            ),<br>            <span class="hljs-comment">// 左上定位</span><br>            <span class="hljs-keyword">const</span> Positioned(<br>                top: <span class="hljs-number">18.0</span>,<br>                left: <span class="hljs-number">20.0</span>,<br>                child: Text(<br>                    <span class="hljs-string">&quot;Your friend&quot;</span>,<br>                    style: TextStyle(color: Colors.blueGrey),<br>                ),<br>            )<br>        ],<br>    ),<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Align"><a href="#Align" class="headerlink" title="Align"></a>Align</h4><ul>
+<li>alignment 对其方式，可以使用具体值Alignment(1,1)，也可以使用内容方式，比如 Alignment.topRight</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart">Align(<br>    <span class="hljs-comment">// 对其方式，可以使用具体值Alignment(1,1)，也可以使用内容方式，比如 Alignment.topRight</span><br>    alignment: Alignment.topRight,<br>    child: FlutterLogo(),<br>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>FractionalOffset <ul>
+<li>FractionalOffset 继承自 Alignment，它和 Alignment唯一的区别就是坐标原点不同！- FractionalOffset 的坐标原点为矩形的左侧顶点，这和布局系统的一致，所以理解起来会比较容易。</li>
+<li>FractionalOffset(.2, 0.2) 具体数值</li>
+<li>FractionalOffset的坐标转换公式为：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs base">实际偏移 = (FractionalOffse.x * (parentWidth - childWidth), FractionalOffse.y * (parentHeight - childHeight))<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart">Align(<br>    <span class="hljs-comment">// alignment: FractionalOffset.topLeft,</span><br>    alignment: FractionalOffset(<span class="hljs-number">.2</span>, <span class="hljs-number">0.2</span>)<br>    child: FlutterLogo(),<br>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dart">Container(<br>    width: <span class="hljs-number">90</span>,<br>    height: <span class="hljs-number">90</span>,<br>    decoration: <span class="hljs-keyword">const</span> BoxDecoration(<br>        color: Colors.limeAccent,<br>    ),<br>    child: <span class="hljs-keyword">const</span> Align(<br>        <span class="hljs-comment">// 对其方式，可以使用具体值Alignment(1,1)，也可以使用内容方式，比如 Alignment.topRight</span><br>        alignment: Alignment.topRight,<br>        child: FlutterLogo(),<br>    ),<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h4><ul>
+<li>ElevatedButton 普通按钮，ElevatedButton.icon 带icon的普通按钮</li>
+<li>OutlinedButton 空心按钮，OutlinedButton.icon 带icon的空心按钮</li>
+<li>TextButton 文本按钮, TextButton.icon 带icon的文本按钮</li>
+<li>IconButton 普通的icon按钮</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs dart">Column(<br>    mainAxisAlignment: MainAxisAlignment.start,<br>    children: [<br>        ElevatedButton.icon(<br>            onPressed: () &#123;&#125;,<br>            label: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;tips&quot;</span>),<br>            icon: <span class="hljs-keyword">const</span> Icon(Icons.push_pin),<br>        ),<br>        OutlinedButton.icon(<br>            onPressed: () &#123;&#125;,<br>            label: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;发送&quot;</span>),<br>            icon: <span class="hljs-keyword">const</span> Icon(Icons.construction),<br>        ),<br>        TextButton.icon(<br>            onPressed: () &#123;&#125;,<br>            label: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;发送&quot;</span>),<br>            icon: <span class="hljs-keyword">const</span> Icon(Icons.search_off_outlined),<br>        ),<br>        IconButton(onPressed: () &#123;&#125;, icon: <span class="hljs-keyword">const</span> Icon(Icons.stadium))<br>    ],<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h4><ul>
+<li>Image.network 使用网络图片</li>
+<li>IMage.asset 使用本地图片<ul>
+<li>width、height：用于设置图片的宽、高，当不指定宽高时，图片会根据当前父容器的限制，尽可能的显示其原始大小，如果只设置width、height的其中一个，那么另一个属性默认会按比例缩放，但可以通过下面介绍的fit属性来指定适应规则</li>
+<li>fit: 该属性用于在图片的显示空间和图片本身大小不同时指定图片的适应模式。适应模式是在BoxFit中定义，它是一个枚举类型，有如下值</li>
+<li>fill: 会拉伸填充满显示空间，图片本身长宽比会发生变化，图片会变形。</li>
+<li>cover: 会按图片的长宽比放大后居中填满显示空间，图片不会变形，超出显示空间部分会被剪裁。</li>
+<li>contain: 这是图片的默认适应规则，图片会在保证图片本身长宽比不变的情况下缩放以适应当前显示空间，图片不会变形。</li>
+<li>fitWidth: 图片的宽度会缩放到显示空间的宽度，高度会按比例缩放，然后居中显示，图片不会变形，超出显示空间部分会被剪裁。</li>
+<li>fitHeight: 图片的高度会缩放到显示空间的高度，宽度会按比例缩放，然后居中显示，图片不会变形，超出显示空间部分会被剪裁。</li>
+<li>none: 图片没有适应策略，会在显示空间内显示图片，如果图片比显示空间大，则显示空间只会显示图片中间部分。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：使用本地图片时候，需要现在 <code>pubspec.yaml</code>中配置， 如下所示：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs base">assets:<br>    - images/avatar.png<br></code></pre></td></tr></table></figure>
+
+<p>本地图片</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart">Image(<br>    image: AssetImage(<span class="hljs-string">&quot;images/avatar.png&quot;</span>),<br>    width: <span class="hljs-number">100.0</span>,<br>    color: Colors.blue,<br>    colorBlendMode: BlendMode.difference,<br>);<br></code></pre></td></tr></table></figure>
+
+<p>网络图片</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dart">Image.network(<br>    <span class="hljs-string">&quot;https://avatars2.githubusercontent.com/u/20411648?s=460&amp;v=4&quot;</span>,<br>    width: <span class="hljs-number">100.0</span>,<br>    fit: BoxFit.contain,<br>    color: Colors.red,<br>    colorBlendMode: BlendMode.difference,<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h4><ul>
+<li>onChanged 切换时状态改变的回调函数</li>
+<li>value 定义改变状态的数值</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">bool</span> _switchSelected = <span class="hljs-keyword">true</span>;<br>Switch(<br>    onChanged: (event) &#123;<br>        setState(() &#123;<br>        _switchSelected = event;<br>        &#125;);<br>    &#125;,<br>    value: _switchSelected,<br>)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="Checkbox"><a href="#Checkbox" class="headerlink" title="Checkbox"></a>Checkbox</h4><ul>
+<li>onChanged 切换时状态改变的回调函数</li>
+<li>value 定义改变状态的数值</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">bool</span> _checkboxSelected = <span class="hljs-keyword">true</span>;<br>Checkbox(<br>    onChanged: (event) &#123;<br>        setState(() &#123;<br>        _checkboxSelected = event!;<br>        &#125;);<br>    &#125;,<br>    value: _checkboxSelected,<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="TextField"><a href="#TextField" class="headerlink" title="TextField"></a>TextField</h4><ul>
+<li><p>controller：编辑框的控制器，通过它可以设置&#x2F;获取编辑框的内容、选择编辑内容、监听编辑文本改变事件。大多数情况下我们都需要显式提供一个controller来与文本框交互。如果没有提供controller，则TextField内部会自动创建一个。</p>
+</li>
+<li><p>focusNode：用于控制TextField是否占有当前键盘的输入焦点。它是我们和键盘交互的一个句柄（handle）。</p>
+</li>
+<li><p>InputDecoration：用于控制TextField的外观显示，如提示文本、背景颜色、边框等。</p>
+</li>
+<li><p>keyboardType: 用户设置该输入框默认的键盘输入类型</p>
+<ul>
+<li>text:  文本输入键盘</li>
+<li>multiline: 多行文本，需要和 maxLines 配合使用（设为null或者大于1）</li>
+<li>number: 数字，弹出数字键盘</li>
+<li>phone: 优化后的电话号码输入键盘；会弹出数字键盘并显示“*#”</li>
+<li>datetime: 优化后的日期输入键盘；Android上会显示“：-”</li>
+<li>emailAddress: 优化后的电子邮件地址；会显示“@.”</li>
+<li>url: 优化后的url输入键盘；会显示 “&#x2F;.”</li>
+</ul>
+</li>
+<li><p>textInputAction：键盘动作按钮图标（搜索），它是一个枚举值，有多个可选值，全部的取值列表读者可以查看API文档，下面是当值为TextInputAction.search时，原生Android系统下键盘样式（搜索）。</p>
+</li>
+<li><p>style：设置样式</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dart">style: <span class="hljs-keyword">const</span> TextStyle(fontSize: <span class="hljs-number">16.0</span>, fontWeight: FontWeight.w500, color: Colors.amber)<br></code></pre></td></tr></table></figure></li>
+<li><p>textAlign：文本对其方式</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dart">textAlign: TextAlign.left,<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>autofocus： 自动获取焦点</p>
+</li>
+<li><p>obscureText：设置为<code>true</code>输入时输入值以<code>.</code>显示，密码框可以用这个实现</p>
+</li>
+<li><p>maxLines：输入值最长行数，默认<code>null</code>即不限制输入换行</p>
+</li>
+<li><p>maxLength：最长输入字符长度</p>
+</li>
+<li><p>toolbarOptions：引用官方的原话如下： ( ‘toolbarOptions’ is deprecated and shouldn’t be used. Use <code>contextMenuBuilder</code> instead. This feature was deprecated after v3.3.0-0.5.pre.<br>Try replacing the use of the deprecated member with the replacement. ) 改用 <code>contextMenuBuilder</code> 返回一个 <code>Widget</code> 实例，例如下面写法：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">// 使用 contextMenuBuilder 代替 toolbarOptions</span><br>contextMenuBuilder:<br>    (BuildContext context, EditableTextState editableTextState) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;data&quot;</span>);<br>&#125;,<br></code></pre></td></tr></table></figure></li>
+<li><p>onChanged：输入时会结构的回调，会监听用户输入；还可以使用 <code>controller</code> 实例获取输入的值。</p>
+</li>
+<li><p>inputFormatters：对输入的值进行校验，参考如下代码</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart">inputFormatters: [<br>    <span class="hljs-comment">// 限制输入类型</span><br>    FilteringTextInputFormatter.allow(<span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;[a-zA-Z]&#x27;</span>)),<br>    <span class="hljs-comment">// 限制输入长度</span><br>    LengthLimitingTextInputFormatter(<span class="hljs-number">8</span>)<br>],<br></code></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs dart"><br><span class="hljs-comment">// 定义 TextField Controller 为接收 TextField 实例产生的值</span><br><span class="hljs-keyword">final</span> TextEditingController _textUsernameController = TextEditingController();<br><span class="hljs-keyword">final</span> TextEditingController _textPasswordController = TextEditingController();<br><br>TextField(<br>    <span class="hljs-comment">// 自动获取焦点</span><br>    autofocus: <span class="hljs-keyword">true</span>,<br>    <span class="hljs-comment">// 用于获取用户输入值</span><br>    controller: _textUsernameController,<br>    <span class="hljs-comment">// 定义输入输入类型</span><br>    keyboardType: TextInputType.emailAddress,<br>    <span class="hljs-comment">// 定义键盘确认按钮</span><br>    textInputAction: TextInputAction.next,<br>    <span class="hljs-comment">// textFiled 样式</span><br>    style: <span class="hljs-keyword">const</span> TextStyle(<br>        fontSize: <span class="hljs-number">16.0</span>, fontWeight: FontWeight.w500, color: Colors.amber),<br>    <span class="hljs-comment">// textFiled 文本对其方式</span><br>    textAlign: TextAlign.left,<br>    <span class="hljs-comment">// 最多可以输入几行，默认 Null  多行</span><br>    maxLines: <span class="hljs-number">1</span>,<br>    <span class="hljs-comment">// 限制输入长度数</span><br>    maxLength: <span class="hljs-number">80</span>,<br>    <span class="hljs-comment">// contextMenuBuilder:</span><br>    <span class="hljs-comment">//     (BuildContext context, EditableTextState editableTextState) &#123;</span><br>    <span class="hljs-comment">//   return const Text(&quot;data-----&quot;);</span><br>    <span class="hljs-comment">// &#125;,</span><br>    <span class="hljs-comment">// 获取用户输入值，同理可以使用 controller</span><br>    onChanged: (value) &#123;<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;onChangeValue <span class="hljs-subst">$&#123;value&#125;</span>&quot;</span>);<br>    &#125;,<br>    <span class="hljs-comment">// TextFiled 输入值校验</span><br>    inputFormatters: [<br>        FilteringTextInputFormatter.allow(<span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;[a-zA-Z]&#x27;</span>)),<br>        LengthLimitingTextInputFormatter(<span class="hljs-number">8</span>)<br>    ],<br>    <span class="hljs-comment">// TextFiled 输入框外观定义</span><br>    decoration: <span class="hljs-keyword">const</span> InputDecoration(<br>        labelText: <span class="hljs-string">&quot;用户名&quot;</span>,<br>        hintText: <span class="hljs-string">&quot;用户名或邮箱&quot;</span>,<br>        prefixIcon: Icon(Icons.person)),<br>),<br>TextField(<br>    obscureText: <span class="hljs-keyword">true</span>,<br>    controller: _textPasswordController,<br>    decoration: <span class="hljs-keyword">const</span> InputDecoration(<br>        labelText: <span class="hljs-string">&quot;密码&quot;</span>, hintText: <span class="hljs-string">&quot;请输入密码&quot;</span>, prefixIcon: Icon(Icons.lock)),<br>)<br><br><span class="hljs-comment">// 输入框值输出</span><br>ElevatedButton.icon(<br>    onPressed: () &#123;<br>        <span class="hljs-comment">// 输出</span><br>        <span class="hljs-built_in">print</span>(_textUsernameController.text);<br>    &#125;,<br>    label: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;获取数据&quot;</span>),<br>    icon: <span class="hljs-keyword">const</span> Icon(Icons.generating_tokens),<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Form"><a href="#Form" class="headerlink" title="Form"></a>Form</h4><ul>
+<li>key 使用<code>formKey</code> 获取输入框的值</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">// 定义 _formKey 实例</span><br>GlobalKey _formKey = GlobalKey&lt;FormState&gt;();<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs dart">Column(<br>    children: [<br>    Form(<br>        key: _formKey,<br>        autovalidateMode: AutovalidateMode.onUserInteraction,<br>        child: Column(<br>            children: [<br>            TextFormField(<br>                autofocus: <span class="hljs-keyword">true</span>,<br>                keyboardType: TextInputType.text,<br>                textAlign: TextAlign.left,<br>                maxLines: <span class="hljs-number">1</span>,<br>                decoration: <span class="hljs-keyword">const</span> InputDecoration(<br>                    labelText: <span class="hljs-string">&quot;用户名&quot;</span>,<br>                    hintText: <span class="hljs-string">&quot;请输入用户名&quot;</span>,<br>                    prefixIcon: Icon(Icons.person_3_outlined)),<br>                validator: (v) &#123;<br>                <span class="hljs-comment">// 校验</span><br>                <span class="hljs-keyword">return</span> v!.trim().isNotEmpty ? <span class="hljs-keyword">null</span> : <span class="hljs-string">&#x27;用户名不能为空&#x27;</span>;<br>                &#125;,<br>            ),<br>            TextFormField(<br>                obscureText: <span class="hljs-keyword">true</span>,<br>                keyboardType: TextInputType.text,<br>                textAlign: TextAlign.left,<br>                maxLines: <span class="hljs-number">1</span>,<br>                decoration: <span class="hljs-keyword">const</span> InputDecoration(<br>                    labelText: <span class="hljs-string">&quot;用户密码&quot;</span>,<br>                    hintText: <span class="hljs-string">&quot;请输入密码&quot;</span>,<br>                    prefixIcon: Icon(Icons.lock_outline)),<br>                validator: (v) &#123;<br>                <span class="hljs-comment">// 校验</span><br>                <span class="hljs-keyword">return</span> v!.trim().isNotEmpty ? <span class="hljs-keyword">null</span> : <span class="hljs-string">&#x27;密码不能为空&#x27;</span>;<br>                &#125;,<br>            ),<br>            Padding(<br>                padding: <span class="hljs-keyword">const</span> EdgeInsets.only(top: <span class="hljs-number">20.0</span>),<br>                child: Row(<br>                children: [<br>                    Expanded(<br>                        child: ElevatedButton(<br>                            onPressed: () &#123;<br>                            <span class="hljs-keyword">var</span> _formState =<br>                                _formKey.currentState <span class="hljs-keyword">as</span> FormState;<br>                            <span class="hljs-comment">// 校验数据</span><br>                            <span class="hljs-keyword">if</span> (_formState.validate()) &#123;<br>                                _formState.save();<br>                            &#125;<br>                            &#125;,<br>                            child: <span class="hljs-keyword">const</span> Text(<span class="hljs-string">&quot;提交数据&quot;</span>)))<br>                ],<br>                ),<br>            )<br>            ],<br>        ))<br>    ],<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="容器类"><a href="#容器类" class="headerlink" title="容器类"></a>容器类</h4><h5 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h5><ul>
+<li>EdgeInsets<ul>
+<li>fromLTRB(double left, double top, double right, double bottom)：分别指定四个方向的填充。</li>
+<li>all(double value) : 所有方向均使用相同数值的填充。</li>
+<li>only({left, top, right ,bottom })：可以设置具体某个方向的填充(可以同时指定多个方向)。</li>
+<li>symmetric({ vertical, horizontal })：用于设置对称方向的填充，vertical指top和bottom，horizontal指left和right</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs dart">Padding(<br>    padding: <span class="hljs-keyword">const</span> EdgeInsets.only(top: <span class="hljs-number">20</span>),<br>    child: Container(<br>        <span class="hljs-comment">// 盒子外观样式</span><br>        decoration: BoxDecoration(<br>            <span class="hljs-comment">// 盒子圆角</span><br>            borderRadius: BorderRadius.circular(<span class="hljs-number">3.0</span>),<br>            <span class="hljs-comment">// 盒子渐变</span><br>            gradient:<br>                LinearGradient(colors: [Colors.red, Colors.orange.shade700]),<br>            <span class="hljs-comment">// 盒子背景阴影</span><br>            boxShadow: <span class="hljs-keyword">const</span> [<br>                BoxShadow(<br>                    color: Colors.black54,<br>                    offset: Offset(<span class="hljs-number">2.0</span>, <span class="hljs-number">2.0</span>),<br>                    blurRadius: <span class="hljs-number">4.0</span>)<br>            ]),<br>        child: <span class="hljs-keyword">const</span> Padding(<br>            padding: EdgeInsets.symmetric(horizontal: <span class="hljs-number">80</span>, vertical: <span class="hljs-number">18</span>),<br>            child: Text(<br>            <span class="hljs-string">&quot;我是按钮&quot;</span>,<br>            style: TextStyle(<br>                fontSize: <span class="hljs-number">20</span>, fontWeight: FontWeight.w800, color: Colors.white),<br>            ),<br>        ),<br>    ),<br>)<br></code></pre></td></tr></table></figure>
+
+<h5 id="BoxDecoration"><a href="#BoxDecoration" class="headerlink" title="BoxDecoration"></a>BoxDecoration</h5><ul>
+<li>borderRadius：容器的圆角值</li>
+<li>gradient：渐变</li>
+<li>boxShadow：阴影</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs dart">Padding(<br>    padding: <span class="hljs-keyword">const</span> EdgeInsets.only(top: <span class="hljs-number">20</span>),<br>    child: Container(<br>        <span class="hljs-comment">// 盒子外观样式</span><br>        decoration: BoxDecoration(<br>            <span class="hljs-comment">// 盒子圆角</span><br>            borderRadius: BorderRadius.circular(<span class="hljs-number">3.0</span>),<br>            <span class="hljs-comment">// 盒子渐变</span><br>            gradient:<br>                LinearGradient(colors: [Colors.red, Colors.orange.shade700]),<br>            <span class="hljs-comment">// 盒子背景阴影</span><br>            boxShadow: <span class="hljs-keyword">const</span> [<br>                BoxShadow(<br>                    color: Colors.black54,<br>                    offset: Offset(<span class="hljs-number">2.0</span>, <span class="hljs-number">2.0</span>),<br>                    blurRadius: <span class="hljs-number">4.0</span>)<br>            ]),<br>        child: <span class="hljs-keyword">const</span> Padding(<br>            padding: EdgeInsets.symmetric(horizontal: <span class="hljs-number">80</span>, vertical: <span class="hljs-number">18</span>),<br>            child: Text(<br>            <span class="hljs-string">&quot;我是按钮&quot;</span>,<br>            style: TextStyle(<br>                fontSize: <span class="hljs-number">20</span>, fontWeight: FontWeight.w800, color: Colors.white),<br>            ),<br>        ),<br>    ),<br>)<br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/flutter/" class="category-chain-item">flutter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/flutter/" class="print-no-link">#flutter</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>flutter常用widget</div>
+      <div>https://dev.dgdream.online/flutter常用widget/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>执念</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年1月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/flutter%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/" title="flutter常用布局方式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">flutter常用布局方式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/flutter%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E8%AE%BE%E8%AE%A1/" title="flutter主题更换设计">
+                        <span class="hidden-mobile">flutter主题更换设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/gaowei1012" target="_blank" rel="nofollow noopener"><span>GitHub</span></a> <i class="iconfont icon-love"></i> <a href="https://www.yuque.com/dashboard" target="_blank" rel="nofollow noopener"><span>语雀</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="执念">
+  <meta name="keywords" content="知识栈,前端,技术人">
+  
+    <meta name="description" content="align-centent 革新 以前，居中元素需要使用各种方法，比如 Flexbox 属性、margin 甚至绝对定位。这意味着开发者需要花费大量时间进行调整和尝试，最终结果可能在某些屏幕尺寸或浏览器类型下失效。   align-content 属性的美妙之处在于它的简洁性。你无需手动将所有元素包裹在容器 div 中，也无需费力地解读复杂的 Flexbox 选项。只需要在你的元素上使用这个属性，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024年的CSS革命">
+<meta property="og:url" content="https://dev.dgdream.online/2024%E5%B9%B4%E7%9A%84CSS%E9%9D%A9%E5%91%BD/index.html">
+<meta property="og:site_name" content="知识栈">
+<meta property="og:description" content="align-centent 革新 以前，居中元素需要使用各种方法，比如 Flexbox 属性、margin 甚至绝对定位。这意味着开发者需要花费大量时间进行调整和尝试，最终结果可能在某些屏幕尺寸或浏览器类型下失效。   align-content 属性的美妙之处在于它的简洁性。你无需手动将所有元素包裹在容器 div 中，也无需费力地解读复杂的 Flexbox 选项。只需要在你的元素上使用这个属性，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-06T07:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-07T03:19:52.123Z">
+<meta property="article:author" content="执念">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>2024年的CSS革命 - 知识栈</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dev.dgdream.online","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>知识栈</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2024年的CSS革命"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-06 15:00" pubdate>
+          2025年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6792417586845054"
+crossorigin="anonymous"></script>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">2024年的CSS革命</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年1月7日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="align-centent-革新"><a href="#align-centent-革新" class="headerlink" title="align-centent 革新"></a><code>align-centent</code> 革新</h2><blockquote>
+<p>以前，居中元素需要使用各种方法，比如 Flexbox 属性、margin 甚至绝对定位。这意味着开发者需要花费大量时间进行调整和尝试，最终结果可能在某些屏幕尺寸或浏览器类型下失效。</p>
+</blockquote>
+<blockquote>
+<p><code>align-content</code> 属性的美妙之处在于它的简洁性。你无需手动将所有元素包裹在容器 div 中，也无需费力地解读复杂的 Flexbox 选项。只需要在你的元素上使用这个属性，它就能根据父容器的显示模式自动进行对齐。</p>
+</blockquote>
+<p>这个新属性对于响应式设计来说是一场革命。它能在任何屏幕尺寸上实现完美的居中对齐，无需额外的媒体查询或布局调整。这意味着“更少的代码，更好的性能，以及更少的样式系统潜在故障点。”</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 使用 Flexbox 的旧方法 */</span><br><span class="hljs-selector-class">.old-center</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">align-items</span>: center;<br>  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100vh</span>;<br>&#125;<br><br><span class="hljs-comment">/* 新方法——更简洁！ */</span><br><span class="hljs-selector-class">.new-center</span> &#123;<br>  <span class="hljs-attribute">align-content</span>: center;<br>  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100vh</span>;<br>&#125;<br><br><span class="hljs-comment">/* 适用于任何内容 */</span><br><span class="hljs-selector-class">.center-text</span> &#123;<br>  <span class="hljs-attribute">align-content</span>: center;<br>&#125;<br><br><span class="hljs-comment">/* 甚至适用于多个元素 */</span><br><span class="hljs-selector-class">.center-group</span> &#123;<br>  <span class="hljs-attribute">align-content</span>: center;<br>  <span class="hljs-attribute">gap</span>: <span class="hljs-number">1rem</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="property-的威力：类型安全的-CSS-变量"><a href="#property-的威力：类型安全的-CSS-变量" class="headerlink" title="@property 的威力：类型安全的 CSS 变量"></a><code>@property</code> 的威力：类型安全的 CSS 变量</h2><p><code>CSS</code> 变量（自定义属性）已经存在一段时间了，但它们有一个局限性：浏览器总是将其值解释为字符串。新的 <code>@property</code> 规则（<code>CSS Houdini</code> 的一部分）解决了这个问题，使得可缩放矢量图形 (SVG) 更加强大。</p>
+<p>在使用普通的 <code>CSS</code> 变量时，动画和过渡可能存在问题或根本无法实现，因为浏览器无法理解变量的类型。例如，我尝试动画化一个基于百分比的渐变，但这行不通，因为对于浏览器来说，它只是一个字符串，而不是一个数字。</p>
+<p><code>@property</code> 规则通过指定变量的类型来消除这个限制。这意味着你的网站将拥有更流畅的界面、更具响应性的功能，以及更少的样式表异常行为。想象一下，为你的 <code>CSS</code> 带来类型安全，就像你在 <code>JavaScript</code> 中使用 <code>TypeScript</code> 一样。</p>
+<p>仅仅是构思一个主题系统，在不同模式之间切换时能够实现颜色混合，就令人兴奋不已。这样，你可以定义浏览器可以原生识别的颜色变量，从而获得必然的平滑过渡，而这在以前要么是不可能的，要么需要调用 <code>JS</code>。</p>
+<p>现在你可以：</p>
+<ul>
+<li>为你的变量定义特定类型（数字、颜色、百分比</li>
+<li>创建更安全、更可预测的代码</li>
+<li>使用类型化值实现流畅动画</li>
+<li>通过更好的浏览器优化来提高性能</li>
+</ul>
+<p>这个特性在处理以下情况时非常有用：</p>
+<ul>
+<li>渐变</li>
+<li>动画</li>
+<li>动态配色方案</li>
+<li>响应式布局</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 旧方法——浏览器将所有内容视为字符串 */</span><br><span class="hljs-selector-pseudo">:root</span> &#123;<br>  <span class="hljs-attr">--gradient-stop</span>: <span class="hljs-number">50%</span>;<br>  <span class="hljs-attr">--theme-color</span>: <span class="hljs-number">#ff0000</span>;<br>&#125;<br><br><span class="hljs-comment">/* 使用 @property 的新方法 */</span><br><span class="hljs-keyword">@property</span> --gradient-stop &#123;<br>  syntax: <span class="hljs-string">&#x27;&lt;percentage&gt;&#x27;</span>;<br>  inherits: false;<br>  initial-value: <span class="hljs-number">0%</span>;<br>&#125;<br><br><span class="hljs-keyword">@property</span> --theme-color &#123;<br>  syntax: <span class="hljs-string">&#x27;&lt;color&gt;&#x27;</span>;<br>  inherits: true;<br>  initial-value: <span class="hljs-number">#ffffff</span>;<br>&#125;<br><br><span class="hljs-comment">/* 现在你可以为这些属性添加动画了！ */</span><br><span class="hljs-selector-class">.gradient-background</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<br>    <span class="hljs-number">90deg</span>,<br>    blue <span class="hljs-built_in">var</span>(--gradient-stop),<br>    red <span class="hljs-built_in">var</span>(--gradient-stop)<br>  );<br>  <span class="hljs-attribute">transition</span>: --gradient-stop <span class="hljs-number">0.3s</span> ease;<br>&#125;<br><br><span class="hljs-selector-class">.gradient-background</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>  <span class="hljs-attr">--gradient-stop</span>: <span class="hljs-number">75%</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="starting-style：为隐藏元素打造更好的动画"><a href="#starting-style：为隐藏元素打造更好的动画" class="headerlink" title="@starting-style：为隐藏元素打造更好的动画"></a><code>@starting-style</code>：为隐藏元素打造更好的动画</h2><blockquote>
+<p>之前我们初始化动画  <code>display:none</code> 实现， 曾经是开发者永恒的痛点之一。现在我们可以使用 <code>@starting-type</code> 规则优雅地解决这个问题。</p>
+</blockquote>
+<p>举例子：模态对话框，它从顶部进入屏幕。以前，为了获得流畅的动画，你必须在 <code>JavaScript</code> 或 <code>CSS</code> 中进行大量的复杂操作。元素要么突然出现，要么需要额外的包装元素和状态来进行过渡。</p>
+<p>使用 <code>@starting-style</code>，你可以设置元素加载并准备使用时的样式，以便从隐藏状态过渡平滑无缝。这使得 <code>UI</code> 更精细，但代码更少。浏览器负责处理动画的编程以及页面外观和行为方式的所有问题。</p>
+<p>这个特性在构建适合残疾人士使用的应用程序界面方面尤其有用。这些过渡修复能够被屏幕阅读器和辅助技术理解，从而提高网站的可访问性，同时还能以视觉上更具吸引力的方式呈现它们。它提供以下功能：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 模态对话框示例 */</span><br><span class="hljs-selector-class">.modal</span> &#123;<br>  <span class="hljs-attribute">display</span>: none;<br>  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(<span class="hljs-number">0</span>);<br>  <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">0.3s</span> ease, opacity <span class="hljs-number">0.3s</span> ease;<br>&#125;<br><br><span class="hljs-keyword">@starting-style</span> &#123;<br>  <span class="hljs-selector-class">.modal</span> &#123;<br>    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">20px</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/* 显示模态框时 */</span><br><span class="hljs-selector-class">.modal</span><span class="hljs-selector-class">.show</span> &#123;<br>  <span class="hljs-attribute">display</span>: block;<br>&#125;<br><br><span class="hljs-comment">/* 下拉菜单示例 */</span><br><span class="hljs-selector-class">.dropdown-menu</span> &#123;<br>  <span class="hljs-attribute">display</span>: none;<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">1</span>);<br>  <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">0.2s</span> ease;<br>&#125;<br><br><span class="hljs-keyword">@starting-style</span> &#123;<br>  <span class="hljs-selector-class">.dropdown-menu</span> &#123;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">0</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-selector-class">.dropdown-menu</span><span class="hljs-selector-class">.open</span> &#123;<br>  <span class="hljs-attribute">display</span>: block;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="增强的数学函数：CSS-变得更强大"><a href="#增强的数学函数：CSS-变得更强大" class="headerlink" title="增强的数学函数：CSS 变得更强大"></a>增强的数学函数：<code>CSS</code> 变得更强大</h2><blockquote>
+<p>增加函数功能。</p>
+</blockquote>
+<p>这些函数意味着在普通的 <code>HTML</code> 中，通常可以省略预处理器或 <code>JavaScript</code>，尽管当然在许多情况下预处理器仍然有用。例如，使用原生数学函数可以更容易地管理诸如计算网格列宽度或设计响应式间距系统等任务。有了它，你就可以在 <code>CSS</code> 中进行复杂的数学运算。</p>
+<p><code>round</code> 类型（<code>floor</code>、<code>ceiling</code>、<code>trunk</code>）的存在允许设计以前似乎不可能实现的改进布局精度。在任何情况下，当你处理网格系统或难以用预设的基于像素的宽度管理的内容时，这些函数都能提供你所需的控制，而无需离开你的样式表。新的数学函数证明了这一点：</p>
+<ul>
+<li>round()： 选择不同的入舍策略（向下取整、向上取整、截断）</li>
+<li>rem()：余数运算</li>
+<li>mod()：模运算， 类似于 <code>JavaScript</code></li>
+</ul>
+<p>上面这些函数为以下这些方面提供了新的特性：</p>
+<ul>
+<li>动态布局</li>
+<li>响应式设计计算</li>
+<li>复杂的动画</li>
+<li>网格系统</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 网格列计算 */</span><br><span class="hljs-selector-class">.grid</span> &#123;<br>  <span class="hljs-attr">--columns</span>: <span class="hljs-number">3</span>;<br>  <span class="hljs-attr">--gap</span>: <span class="hljs-number">20px</span>;<br><br>  <span class="hljs-attribute">display</span>: grid;<br>  <span class="hljs-attribute">gap</span>: <span class="hljs-built_in">var</span>(--gap);<br>  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(<br>    <span class="hljs-built_in">var</span>(--columns),<br>    <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> / <span class="hljs-built_in">var</span>(--columns) - <span class="hljs-built_in">round</span>(<span class="hljs-built_in">var</span>(--gap) * (<span class="hljs-built_in">var</span>(--columns) - <span class="hljs-number">1</span>) / <span class="hljs-built_in">var</span>(--columns)))<br>  );<br>&#125;<br><br><span class="hljs-comment">/* 使用 mod 实现交替样式 */</span><br><span class="hljs-selector-class">.list-item</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-built_in">mod</span>(<span class="hljs-built_in">var</span>(--index), <span class="hljs-number">2</span>) * <span class="hljs-number">1rem</span>;<br>&#125;<br><br><span class="hljs-comment">/* 舍入示例 */</span><br><span class="hljs-selector-class">.element</span> &#123;<br>  <span class="hljs-comment">/* 四舍五入到最接近的整数 */</span><br>  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">round</span>(<span class="hljs-built_in">calc</span>(<span class="hljs-number">100vw</span> / <span class="hljs-number">3</span>));<br><br>  <span class="hljs-comment">/* 向下取整 */</span><br>  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">round</span>(down, <span class="hljs-built_in">calc</span>(<span class="hljs-number">100vh</span> / <span class="hljs-number">4</span>));<br><br>  <span class="hljs-comment">/* 向上取整 */</span><br>  <span class="hljs-attribute">margin</span>: <span class="hljs-built_in">round</span>(up, <span class="hljs-built_in">calc</span>(<span class="hljs-number">2.1rem</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用-light-dark-简化明-暗模式"><a href="#使用-light-dark-简化明-暗模式" class="headerlink" title="使用 light-dark() 简化明&#x2F;暗模式"></a>使用 <code>light-dark()</code> 简化明&#x2F;暗模式</h2><p>管理明暗模式一直是一件比较麻烦的事情。新的 <code>light-dark()</code> 特性极大地简化了这个过程。</p>
+<p>在真正的暗模式概念出现之前，只有两种创建它的方法，第一种是使用两种 <code>CSS</code> 样式，另一种是使用具有媒体查询的 <code>CSS</code> 变量。上述方法导致代码重复，从而导致代码重复和更高的维护成本。<code>HTML5</code> 的新 <code>light-dark()</code> 函数简化了同时设置这两者的过程。</p>
+<p>此特性还增强了浏览器的性能，因为浏览器能够修改主题之间切换的性质。无需加载样式表或等待 <code>JavaScript</code> 更改那些变量，它根本不需要。它是无缝的并且快速发生，从而为用户提供比标准方法更好的体验。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 旧方法 */</span><br><span class="hljs-selector-pseudo">:root</span> &#123;<br>  <span class="hljs-attr">--bg-color</span>: white;<br>  <span class="hljs-attr">--text-color</span>: black;<br>&#125;<br><br><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">prefers-color-scheme</span>: dark) &#123;<br>  <span class="hljs-selector-pseudo">:root</span> &#123;<br>    <span class="hljs-attr">--bg-color</span>: black;<br>    <span class="hljs-attr">--text-color</span>: white;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/* 使用 light-dark() 的新方法 */</span><br><span class="hljs-selector-class">.element</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">light-dark</span>(<span class="hljs-number">#ffffff</span>, <span class="hljs-number">#121212</span>);<br>  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">light-dark</span>(<span class="hljs-number">#121212</span>, <span class="hljs-number">#ffffff</span>);<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">light-dark</span>(<span class="hljs-number">#ddd</span>, <span class="hljs-number">#333</span>);<br>  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">4px</span> <span class="hljs-built_in">light-dark</span>(<span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>), <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.4</span>));<br>&#125;<br><br><span class="hljs-comment">/* 与 CSS 变量结合使用 */</span><br><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attr">--button-bg</span>: <span class="hljs-built_in">light-dark</span>(<span class="hljs-number">#007bff</span>, <span class="hljs-number">#0056b3</span>);<br>  <span class="hljs-attr">--button-text</span>: <span class="hljs-built_in">light-dark</span>(white, <span class="hljs-number">#e1e1e1</span>);<br><br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--button-bg);<br>  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--button-text);<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.5rem</span> <span class="hljs-number">1rem</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用用户伪类增强表单验证"><a href="#使用用户伪类增强表单验证" class="headerlink" title="使用用户伪类增强表单验证"></a>使用用户伪类增强表单验证</h2><p>!()[<a target="_blank" rel="noopener" href="https://mmbiz.qpic.cn/sz_mmbiz_jpg/HLN2IKtpicicE6uqDgA0bpTyoibQvsjdeecvBrlmTGgTCDXMK0HNpknLyagPmN4icgXOj2FCM6wicCDLgg35Gvhxovw/640?wx_fmt=jpeg&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1%5D">https://mmbiz.qpic.cn/sz_mmbiz_jpg/HLN2IKtpicicE6uqDgA0bpTyoibQvsjdeecvBrlmTGgTCDXMK0HNpknLyagPmN4icgXOj2FCM6wicCDLgg35Gvhxovw/640?wx_fmt=jpeg&amp;from=appmsg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1]</a></p>
+<p>借助 <code>:user-valid</code> 和 <code>:user-invalid</code> 伪类的引入，表单验证变得更加用户友好。</p>
+<p>登录表单，你需要仅在用户尝试提交表单或离开输入字段时显示错误消息。以前，这只能通过使用 <code>Javascript</code> 事件监听器或复杂的 <code>CSS hacks</code> 来实现。新的伪类自然地实现了这一点，增强了页面的可用性，而无需额外的代码。</p>
+<p>此特性还方便了访问；很容易。以前，表单验证状态对于某些屏幕阅读器来说难以识别，而现在它们更改表单的方式对每个人都更有用。显示错误消息的时间变得更有逻辑，表单未完成的实例减少了。这些新特性：</p>
+<ul>
+<li>仅在用户交互后触发</li>
+<li>防止过早显示错误消息</li>
+<li>改善用户体验</li>
+<li>降低代码复杂度</li>
+</ul>
+<p>这比传统的 <code>:valid</code> 和 <code>:invalid</code> 伪类有了显著的改进，传统的伪类会立即触发，通常会导致糟糕的用户体验。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 基本输入样式 */</span><br><span class="hljs-selector-class">.input-field</span> &#123;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#ccc</span>;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.5rem</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;<br>&#125;<br><br><span class="hljs-comment">/* 旧方法——立即显示 */</span><br><span class="hljs-selector-class">.input-field</span><span class="hljs-selector-pseudo">:invalid</span> &#123;<br>  <span class="hljs-attribute">border-color</span>: red;<br>&#125;<br><br><span class="hljs-comment">/* 新方法——仅在用户交互后显示 */</span><br><span class="hljs-selector-class">.input-field</span><span class="hljs-selector-pseudo">:user-invalid</span> &#123;<br>  <span class="hljs-attribute">border-color</span>: red;<br>  <span class="hljs-attribute">animation</span>: shake <span class="hljs-number">0.3s</span> ease-in-out;<br>&#125;<br><br><span class="hljs-selector-class">.input-field</span>:user-valid &#123;<br>  <span class="hljs-attribute">border-color</span>: green;<br>&#125;<br><br><span class="hljs-comment">/* 错误消息样式 */</span><br><span class="hljs-selector-class">.error-message</span> &#123;<br>  <span class="hljs-attribute">display</span>: none;<br>  <span class="hljs-attribute">color</span>: red;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;<br>  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.25rem</span>;<br>&#125;<br><br><span class="hljs-selector-class">.input-field</span><span class="hljs-selector-pseudo">:user-invalid</span> + <span class="hljs-selector-class">.error-message</span> &#123;<br>  <span class="hljs-attribute">display</span>: block;<br>&#125;<br><br><span class="hljs-comment">/* 成功样式 */</span><br><span class="hljs-selector-class">.success-icon</span> &#123;<br>  <span class="hljs-attribute">display</span>: none;<br>&#125;<br><br><span class="hljs-selector-class">.input-field</span>:user-valid ~ .success-icon &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>&#125;<br><br><span class="hljs-keyword">@keyframes</span> shake &#123;<br>  <span class="hljs-number">0%</span>, <span class="hljs-number">100%</span> &#123; <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">0</span>); &#125;<br>  <span class="hljs-number">25%</span> &#123; <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-<span class="hljs-number">5px</span>); &#125;<br>  <span class="hljs-number">75%</span> &#123; <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">5px</span>); &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="interpolate-size：为自动高度实现流畅动画"><a href="#interpolate-size：为自动高度实现流畅动画" class="headerlink" title="interpolate-size：为自动高度实现流畅动画"></a><code>interpolate-size</code>：为自动高度实现流畅动画</h2><p>一个手风琴组件在展开时添加了内容。在此特性之前，动画高度的唯一方法是具有挑战性的，尤其是在处理动态内容时。主要问题在于开发者如何依赖 JavaScript 解决方案，或者使用固定高度动画，当内容较长时，这些动画就会停止工作。</p>
+<p>因此，<code>interpolate-size</code> 属性可以轻松应对这些情况。浏览器会平滑地确定动画的正确路径，从而使过渡无缝，而不管内容的大小如何。即使你没有定义最终高度，它也能正常工作，这使得它更适合用于动态内容区域。现在你可以：</p>
+<ul>
+<li>平滑地动画化 height: auto</li>
+<li>创建流畅的下拉菜单动画</li>
+<li>优雅地处理动态内容变化</li>
+<li>实现更平滑的 UI 过渡</li>
+</ul>
+<p>这个特性特别适用于：</p>
+<ul>
+<li>下拉菜单</li>
+<li>可展开部分</li>
+<li>手风琴组件</li>
+<li>动态内容区域</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 手风琴示例 */</span><br><span class="hljs-selector-class">.accordion</span> &#123;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-selector-class">.accordion-content</span> &#123;<br>  <span class="hljs-attribute">height</span>: auto;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#f5f5f5</span>;<br>  interpolate-size: allow;<br>  <span class="hljs-attribute">transition</span>: height <span class="hljs-number">0.3s</span> ease;<br>&#125;<br><br><span class="hljs-selector-class">.accordion-content</span><span class="hljs-selector-class">.closed</span> &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;<br>&#125;<br><br><span class="hljs-comment">/* 下拉菜单示例 */</span><br><span class="hljs-selector-class">.dropdown</span> &#123;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-selector-class">.dropdown-menu</span> &#123;<br>  <span class="hljs-attribute">height</span>: auto;<br>  interpolate-size: allow;<br>  <span class="hljs-attribute">transition</span>: height <span class="hljs-number">0.3s</span> ease;<br>&#125;<br><br><span class="hljs-selector-class">.dropdown-menu</span><span class="hljs-selector-class">.collapsed</span> &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">/* 卡片展开示例 */</span><br><span class="hljs-selector-class">.card</span> &#123;<br>  interpolate-size: allow;<br>  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.3s</span> ease;<br>&#125;<br><br><span class="hljs-selector-class">.card</span><span class="hljs-selector-class">.expanded</span> &#123;<br>  <span class="hljs-attribute">height</span>: auto;<br>  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">2rem</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CSS/" class="print-no-link">#CSS</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2024年的CSS革命</div>
+      <div>https://dev.dgdream.online/2024年的CSS革命/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>执念</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月6日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年1月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/flutter%E4%B9%8BWidgetsBindingObserver%E5%89%8D%E5%90%8E%E5%8F%B0%E7%9B%91/" title="flutter 之 WidgetsBindingObserver 前后台监听">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">flutter 之 WidgetsBindingObserver 前后台监听</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/flutter%E4%B9%8Bimge_pikcer/" title="flutter之image_picker上传图片">
+                        <span class="hidden-mobile">flutter之image_picker上传图片</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/gaowei1012" target="_blank" rel="nofollow noopener"><span>GitHub</span></a> <i class="iconfont icon-love"></i> <a href="https://www.yuque.com/dashboard" target="_blank" rel="nofollow noopener"><span>语雀</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
